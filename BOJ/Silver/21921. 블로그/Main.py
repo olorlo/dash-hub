@@ -1,3 +1,5 @@
+
+
 N, X = map(int, input().split())
 arr = list(map(int, input().split()))
 window = sum(arr[:X])
@@ -12,7 +14,7 @@ for i in range(len(arr)-X):
         cnt.append(max_sum)
 
 for j in range(len(cnt)):
-    if max_sum == cnt[j]:
+    if cnt[j] == max_sum:
         cnt1 += 1
 
 if max_sum == 0:
@@ -20,3 +22,4 @@ if max_sum == 0:
 else:
     print(max_sum)
     print(cnt1)
+
