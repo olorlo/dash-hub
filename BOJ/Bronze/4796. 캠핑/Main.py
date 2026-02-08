@@ -16,7 +16,7 @@ while(True):
                 arr[i] = 0
                 cnt-=1
                 break
-            arr[i]=cnt
+        arr[i]=cnt
         cnt+=1
 
     # 출력
