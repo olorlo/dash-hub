@@ -8,4 +8,4 @@ while(True):
     if L==0 and P ==0 and V ==0:
         break
     # 출력
-    print(f'Case {tc}: {V-(V//P)*(P-L)}')
+    print(f'Case {tc}: {(V//P)*L +min(L, V%P)}')
