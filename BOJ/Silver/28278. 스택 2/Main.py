@@ -1,5 +1,7 @@
-# import sys
+import sys
 # sys.stdin = open("input.txt", 'r')
+# 빠른 입력
+input = sys.stdin.readline
 # sys.setrecursionlimit(10**6)
 
 # 백준 28278번 스택2
