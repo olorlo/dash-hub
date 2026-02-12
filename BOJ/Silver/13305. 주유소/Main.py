@@ -3,9 +3,9 @@
 N = int(input())
 road_len = list(map(int, input().split()))
 station = list(map(int, input().split()))
-min_fee =10000
+
+min_fee = station[0]
 fee = 0
-i = 0
 
 # while True: (틀린 코드)
     # if station[i] >= station[i+1]:
