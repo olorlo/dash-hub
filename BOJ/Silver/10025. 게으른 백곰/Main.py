@@ -11,9 +11,7 @@ if 2 * K >= MAX:
     max_ice = sum(arr)
 
 # 초기 상태 지정
-temp =0
-for i in range(2 * K + 1):
-    temp += arr[i]
+temp = sum(arr[:2*K + 1])
 
 max_ice = temp
 for i in range(MAX - 2 * K):
