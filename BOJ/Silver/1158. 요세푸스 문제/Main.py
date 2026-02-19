@@ -10,8 +10,8 @@ for i in range(1, N + 1):
 
 print('<', end ='')
 while len(queue)>1:
-    queue.append(queue.popleft())
-    queue.append(queue.popleft())
+    for _ in range(K-1):
+        queue.append(queue.popleft())
     
     print(f'{queue.popleft()}', end = ', ')
 print(queue.popleft(), end='')
