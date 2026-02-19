@@ -3,17 +3,20 @@ n = int(input())
 arr = [int(input()) for _ in range(n)]
 stack = []
 result = []
+ans = []
 idx = 0
 i = 1
 while True:
 
     if result == arr:
         break
+
     
     while stack:
         if arr[idx] == stack[-1]:
             result.append(stack.pop())
-            print('-')
+            ans.append('-')
+            # print('-')
             idx += 1
         else: 
             break
@@ -21,5 +24,12 @@ while True:
     if i >= n + 1:
         break
     stack.append(i)
-    print('+')
+    # print('+')
+    ans.append('+')
     i += 1
+
+if result == arr:
+    for i in ans:
+        print(i, end = '\n')
+else:
+    print('NO')
