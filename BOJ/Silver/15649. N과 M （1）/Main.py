@@ -1,12 +1,10 @@
-# 백준 15649번 N, M (1)
-
 def bt(path):
     if len(path) == M:
         print(*path)
         return 
     for i in range(1, N+1):
         if visited[i] == 0:
-            visited[i] == 1
+            visited[i] = 1
             path.append(i)
             bt(path)
             path.pop()
