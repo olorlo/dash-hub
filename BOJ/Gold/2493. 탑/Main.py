@@ -1,3 +1,7 @@
+import sys
+# sys.stdin = open("input.txt", "r")
+input = sys.stdin.readline
+
 # 백준 2493번 탑
 N = int(input())
 stack = list(map(int, input().split()))
@@ -18,3 +22,5 @@ while True:
                 break
 
 print(*list(reversed(result)))
+
+
