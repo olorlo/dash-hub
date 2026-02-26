@@ -2,13 +2,12 @@
 
 N, P = map(int, input().split())
 
-guitar = [list(map(int, input().split())) for _ in range(N)]
-
 finger = [[] for _ in range(7)]
 
 cnt = 0
 
-for num, fret in guitar:
+for _ in range(N):
+    num, fret = map(int, input().split())
 
     # 프렛 보다 큰 값 존재하면 없애기
     while finger[num] and finger[num][-1] > fret:
