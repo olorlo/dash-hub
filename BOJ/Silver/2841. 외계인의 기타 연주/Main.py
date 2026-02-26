@@ -1,0 +1,25 @@
+# 백준 2841번 외계인의 기타 연주
+
+N, P = map(int, input().split())
+
+guitar = [list(map(int, input().split())) for _ in range(N)]
+
+finger = [[] for _ in range(7)]
+
+cnt = 0
+
+for num, fret in guitar:
+
+    # 프렛 보다 큰 값 존재하면 없애기
+    while finger[num] and finger[num][-1] > fret:
+        finger[num].pop()
+        cnt += 1
+
+    # 같은 프렛이면 아무것도 안함      
+    if finger[num] and finger[num][-1] == fret:
+        continue
+
+    finger[num].append(fret)
+    cnt += 1
+
+print(cnt)
