@@ -21,4 +21,8 @@ for tc in range(T):
         else:
             stack.append(L[i])
 
+    # wait에 남아있는 알파벳 뒤집어서 stack에 넣어주기
+    stack.extend(reversed(wait))
+
+    # 결과 출력
     print(''.join(stack))
