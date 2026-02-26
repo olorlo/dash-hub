@@ -1,3 +1,7 @@
+import sys
+# sys.stdin = open("input.txt", "r")
+input = sys.stdin.readline
+
 # 백준 2841번 외계인의 기타 연주
 
 N, P = map(int, input().split())
