@@ -1,6 +1,7 @@
 import sys
 # sys.stdin = open("python/input.txt", 'r')
 sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 
 # 백준 11724번 연결 요소의 개수
 N, M = map(int, input().split())
