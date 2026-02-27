@@ -1,5 +1,3 @@
-# 백준 11403번 경로 찾기
-
 import sys
 # sys.stdin = open("python/input.txt", 'r')
 
@@ -7,7 +5,7 @@ import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
-# -----------------------------
+# 백준 11403번 경로 찾기
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 graph = [[] for _ in range(N)]
@@ -29,7 +27,9 @@ def dfs(v):
 for start in range(N):
     visited= [0] * N
     
-    dfs(start) # -> 처음꺼 돌려서 방문한 정점 모두 visited에 저장됨
+    for next in range(N):
+        if arr[start][next] == 1 and visited[next] == 0:
+            dfs(next) # -> 처음꺼 돌려서 방문한 정점 모두 visited에 저장됨
 
     # 모든 정점에 대해서 방문된 정점이 있으면 result 1로 만들어준다.
     for end in range(N):
