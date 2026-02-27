@@ -1,3 +1,7 @@
+import sys
+# sys.stdin = open("python/input.txt", 'r')
+sys.setrecursionlimit(10**6)
+
 # 백준 11724번 연결 요소의 개수
 N, M = map(int, input().split())
 graph = [[] for _ in range(N+1)]
