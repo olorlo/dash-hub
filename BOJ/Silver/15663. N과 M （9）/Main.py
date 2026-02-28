@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", 'r')
+# sys.stdin = open("input.txt", 'r')
 
 # 백준 dfs일 경우 무조건 추가해준다.
 sys.setrecursionlimit(10**6)
@@ -15,7 +15,7 @@ def recur(path):
         return 
     
     # prev: 현재 깊이에서 중복이 있는지 체크하기 위한 변수
-    # -> 깊이마다 따로 존재해야함
+    # -> 깊이마다 따로 존재해야함 따라서 depth 시작 시 초기화
     prev = -1
 
     # 현재 깊이에서 선택할 수 있는 후보들 
@@ -31,7 +31,7 @@ def recur(path):
         visited[i] = 1
         path.append(arr[i])
 
-        # 중복 제거
+        # [1,9]가 두번 나오지 않게 중복 제거
         prev = arr[i]
 
         recur(path)
@@ -43,7 +43,7 @@ def recur(path):
 N, M = map(int, input().split())
 arr = list(map(int, input().split()))
 arr.sort()
-result = []
+
 visited = [0] * (N)
 
 recur([])
