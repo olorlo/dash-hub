@@ -14,16 +14,24 @@ def recur(path):
         return 
     
     for i in range(N):
-        # 중복 제거
-        if path:
-            if path[-1] == arr[i]:
-                continue
+        # 이미 방문: continue
+        if visited[i]:
+            continue
+
+        # 방문하지 않았다면: 방문 표시
+        visited[i] = True
         path.append(arr[i])
+
         recur(path)
+
         path.pop()
+        visited[i] = False
 
 
 N, M = map(int, input().split())
 arr = list(map(int, input().split()))
 arr.sort()
+
+visited = [0] * N
+
 recur([])
