@@ -1,14 +1,12 @@
 import sys
-# sys.stdin = open("input.txt", 'r')
-
+#sys.stdin = open("input.txt", 'r')
 input = sys.stdin.readline
-
 from collections import deque
 
 # 백준 4963번 섬의 개수
 
 dy = [-1, -1, -1, 1, 1, 1, 0, 0]
-dx = [1, 0, 1, -1, 0, 1, -1, 1]
+dx = [-1, 0, 1, -1, 0, 1, -1, 1]
 
 def bfs(y, x):
     dq = deque([(y, x)])
@@ -43,3 +41,8 @@ while True:
                 bfs(i, j)
                 cnt += 1
     print(cnt)
+        
+
+
+
+
