@@ -10,7 +10,7 @@ n = int(input())
 pair = int(input())
 arr = [list(map(int, input().split())) for _ in range(pair)]
 
-visited = [0] * n
+visited = [0] * (n+1)
 
 def bfs(start):
     global cnt
