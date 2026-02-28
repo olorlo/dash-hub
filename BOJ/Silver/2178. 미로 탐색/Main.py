@@ -13,7 +13,6 @@ dy = [-1, 1, 0, 0]
 dx = [0, 0, -1, 1]
 
 def bfs(y, x):
-    global cnt
     dq = deque([(y, x)])
     visited[y][x] = 1
     while dq:
@@ -28,7 +27,6 @@ def bfs(y, x):
             if not visited[ny][nx] and int(maze[ny][nx]):
                 # visited에 현재 거리 + 1 씩 해주면서 거리 더 해감
                 visited[ny][nx] = visited[now_y][now_x] + 1
-                cnt += 1 
                 dq.append([ny, nx])
 
 visited = [[0] * M for _ in range(N)]
