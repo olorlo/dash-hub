@@ -1,18 +1,19 @@
 import sys
-sys.stdin = open("input.txt", 'r')
+# sys.stdin = open("input.txt", 'r')
 input = sys.stdin.readline
 
 from collections import deque
 
 # 백준 7576번 토마토
 M, N = map(int, input().split())
-tomatoes = [list(map(int, input().split())) for _ in range(M)]
+tomatoes = [list(map(int, input().split())) for _ in range(N)]
 
 dy = [1, -1, 0, 0]
 dx = [0, 0, 1, -1]
 
 def bfs(N, M):
     dq = deque()
+
     for y in range(N):
         for x in range(M):
             # 익은 토마토라면 덱에 넣음
@@ -36,6 +37,7 @@ def bfs(N, M):
                 dq.append((ny, nx))
     
 bfs(N, M)
+
 max_day = 0
 
 for y in range(N):
