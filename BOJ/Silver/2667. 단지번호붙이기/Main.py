@@ -14,11 +14,12 @@ dy = [-1, 1, 0, 0]
 dx = [0, 0, -1, 1]
 
 def bfs(y, x):
+    global house
     dq = deque([(y, x)])
     visited[y][x] = 1
+    house = 1
 
     while dq:
-        global house
         now_y, now_x = dq.popleft()
 
         for k in range(4):
