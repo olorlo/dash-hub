@@ -15,7 +15,7 @@ dx = [0, 0, -1, 1]
 
 def bfs(y, x):
     dq = deque([(y, x)])
-    visited[y][x] == 1
+    visited[y][x] = 1
 
     while dq:
         global house
