@@ -21,7 +21,7 @@ def bfs(H, N, M):
         for y in range(N):
             for x in range(M):
                 # 익은 토마토일 때 전부 덱에 넣음
-                if tomatoes[z][y][x]:
+                if tomatoes[z][y][x] == 1:
                     dq.append((z, y, x))
 
     # 넣은 것들 중에서 아래위상하좌우 체크
