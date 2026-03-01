@@ -39,6 +39,11 @@ def recur(node):
 
 
 recur('A')
-print(*preorder)
-print(*inorder)
-print(*postorder)
+for i in range(N):
+    print(preorder[i], end = '')
+print()
+for i in range(N):
+    print(inorder[i], end = '')
+print()
+for i in range(N):
+    print(postorder[i], end = '')
