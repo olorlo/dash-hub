@@ -7,7 +7,6 @@ input = sys.stdin.readline
 N = int(input())
 
 parent = list(map(int, input().split()))
-print(parent)
 child = [[] for _ in range(N)]
 delete_node = int(input())
 
