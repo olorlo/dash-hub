@@ -4,50 +4,47 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 # 백준 1068번 트리
+# 어떤 노드를 삭제했을 때 남는 리프 노드 개수는 몇개인가?
+# 노드를 삭제하면 변하는 것: 그 노드 + 노드의 모든 자식들 
+# (중요!) 부모가 자식을 하나 잃으면 그 부모가 리프가 될 수 있음
 N = int(input())
 
 parent = list(map(int, input().split()))
 child = [[] for _ in range(N)]
 delete_node = int(input())
-
-# 일단 parent를 child 리스트로 바꿈
-# 전체 leaf 수를 세기
-# 삭제하면 그 idx와 연결된 child와 연결된 leaf 세기
-# 두개를 빼서 남은 leaf 수 세기
+root = 0
 
 # parent가 값인 리스트를 child가 값인 리스트로 바꿈
 for i in range(N):
+    # 부모가 -1이면 root
     if parent[i] == -1:
-        continue
-    child[parent[i]].append(i)
-for i in range(N):
-    if not child[i]:
-        child[i].append(-1) 
+        root = i
+    else:
+        child[parent[i]].append(i)
 
 cnt = 0
-visited = [0] * (N+1) 
 
 def leaf(node):
     global cnt
-    if child[node] == [-1]:
-        cnt += 1
+
+    if node == delete_node:
         return
+    
+    # 삭제된 노드를 제외한 자식 개수
+    valid_children = 0
+
+    # 자식 개수를 세는 반복문
     for next in child[node]:
-        if visited[next]:
+        if next == delete_node:
             continue
-        visited[next] = 1
+
+        valid_children += 1
         leaf(next)
+    
+    # 자식 개수를 셌는데도 0이다 -> leaf임
+    if valid_children == 0:
+        cnt += 1
 
-# 전체 leaf 수를 셈
-for i in range(N):
-    if not visited[i]:
-        leaf(i)
-total = cnt
+leaf(root)
 
-# delete할 node와 연결된 leaf 수를 셈
-cnt = 0
-visited = [0] * (N+1) 
-leaf(delete_node)
-
-# 남은 leaf의 수: 전체 leaf 수 - delete된 leaf 수
-print(total - cnt)
+print(cnt)
