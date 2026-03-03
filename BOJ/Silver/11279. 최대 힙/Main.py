@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 import heapq
 
 # 백준 11279번 최대 힙
