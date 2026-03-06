@@ -28,5 +28,5 @@ def bfs(n, k):
         dq.append((subin+1, dongseang))
  
 N, K = map(int,input().split())
-visited = [-1] * 100001
+visited = [-1] * 1000000
 print(bfs(N, K))
