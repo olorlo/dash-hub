@@ -5,13 +5,15 @@ from collections import deque
 
 # 1697번 숨바꼭질
 def bfs(n, k):
-    global cnt, min_cnt 
     dq = deque([(n, k)])
     visited[n] = 0
 
     while dq:
         subin, dongseang = dq.popleft()
-        
+
+        if subin > 100000:
+            continue
+
         if subin == dongseang:
             return visited[dongseang]
         
