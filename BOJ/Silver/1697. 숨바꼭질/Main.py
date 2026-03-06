@@ -4,31 +4,28 @@ import sys
 from collections import deque
 
 # 1697번 숨바꼭질
-def bfs(n, k):
-    dq = deque([(n, k)])
+def bfs(n,k):
+    dq = deque([n])
     visited[n] = 0
 
     while dq:
-        subin, dongseang = dq.popleft()
+        subin = dq.popleft()
 
-        if subin > 100000:
-            continue
-
-        if subin == dongseang:
-            return visited[dongseang]
-        
-        if visited[subin*2] == -1:
+        if subin == k:
+            return visited[subin]
+    
+        if 0 <= subin*2<=100000 and visited[subin*2] == -1:
             visited[subin*2] = visited[subin] + 1
-        dq.append((subin*2, dongseang))
+            dq.append(subin*2)
 
-        if visited[subin-1] == -1:
+        if 0 <= subin-1<=100000 and visited[subin-1] == -1:
             visited[subin -1] = visited[subin] + 1
-        dq.append((subin-1, dongseang))
+            dq.append(subin-1)
 
-        if visited[subin+1] == -1:
+        if 0 <= subin+1 <=100000 and visited[subin+1] == -1:
             visited[subin +1] = visited[subin] + 1
-        dq.append((subin+1, dongseang))
+            dq.append(subin+1)
  
 N, K = map(int,input().split())
-visited = [-1] * 200000
+visited = [-1] * 100001
 print(bfs(N, K))
