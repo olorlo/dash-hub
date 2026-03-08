@@ -16,7 +16,7 @@ def bfs(cur):
         
         # 현재 위치에서 갈 수 있는 경우의 수
         for next in (now+U, now-D):
-            if next < 0 or next >F:
+            if next < 1 or next >F:
                 continue
             # 이미 방문했다면 continue
             if visited[next] != -1:
