@@ -6,6 +6,7 @@ from collections import deque
 # 5014번 스타트링크
 def bfs(cur):
     dq = deque([cur])
+    visited[cur] = 0
     
     while dq:
         now = dq.popleft()
@@ -17,16 +18,18 @@ def bfs(cur):
         for next in (now+U, now-D):
             if next < 0 or next >F:
                 continue
-            if visited[next]:
+            # 이미 방문했다면 continue
+            if visited[next] != -1:
                 continue
 
             visited[next] = visited[now] + 1
-            # cnt += 1
             dq.append(next)
             
     return 'use the stairs'
 
 F, S, G, U, D = map(int, input().split())
-visited = [0]*(F+1)
+visited = [-1]*(F+1)
+
 result = bfs(S)
+
 print(result)
