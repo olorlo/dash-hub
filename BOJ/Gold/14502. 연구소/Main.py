@@ -51,7 +51,7 @@ N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
 # 벽 만들기 
-def make_wall(cnt):
+def make_wall(cnt, start):
     global safe
 
     # 벽 3개가 세워지면 바이러스 확산 실행
@@ -61,22 +61,22 @@ def make_wall(cnt):
         return
     
     # 벽 무한 생성 ㅋㅋ
-    for i in range(N):
-        for j in range(M):
+    for idx in range(start, N*M):
+        y = idx // M
+        x = idx % M
+        # 모든 칸 탐색해서 0이면 벽 만들기
+        if arr[y][x] == 0:
+            arr[y][x] = 1
 
-            # 모든 칸 탐색해서 0이면 벽 만들기
-            if arr[i][j] == 0:
-                arr[i][j] = 1
+            # 다음 벽 세우기
+            make_wall(cnt + 1, idx+1)
 
-                # 다음 벽 세우기
-                make_wall(cnt + 1)
-
-                # 백트래킹 (벽 다시 제거 후 다시 생성하기 위한 도약)
-                arr[i][j] = 0
+            # 백트래킹 (벽 다시 제거 후 다시 생성하기 위한 도약)
+            arr[y][x] = 0
 
 # 벽을 먼저 세우고 bfs로 최단 거리 탐색
 safe = 0
-make_wall(0)
+make_wall(0, 0)
 
 # 결과
 print(safe)
