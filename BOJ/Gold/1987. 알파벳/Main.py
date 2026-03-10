@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 # sys.stdin = open("input.txt", "r")
 
 from collections import deque
@@ -13,7 +14,7 @@ dx = [0, 0, -1, 1]
 
 def dfs(y, x):
     global max_value
-
+    max_value = max(max_value, len(stack))
     for k in range(4):
         ny = y + dy[k]
         nx = x + dx[k]
@@ -23,22 +24,13 @@ def dfs(y, x):
 
         if arr[ny][nx] in stack:
             continue
-
-        if not visited[ny][nx]:
-            stack.append(arr[ny][nx])
-            visited[ny][nx] = visited[y][x] + 1
-            result = dfs(ny, nx)
-            max_value = max(result, max_value)
-            visited[ny][nx] = 0
-            stack.pop()
-            
-    return len(stack)
+        stack.append(arr[ny][nx])
+        dfs(ny, nx)
+        stack.pop()
 
 max_value = 0
-visited = [[0]*C for _ in range(R)]
 stack = []
 stack.append(arr[0][0])
-visited[0][0] = 1
 
 dfs(0, 0)
 print(max_value)
