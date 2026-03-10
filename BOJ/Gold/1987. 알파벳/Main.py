@@ -14,8 +14,8 @@ dx = [0, 0, -1, 1]
 
 def dfs():
     global max_value
-    # 재귀로 하니까 시간 초과나서 스택 dfs로 수정
     stack.append((0, 0, 1 << start, 1))
+    visited.add((0, 0, 1 << start))
 
     while stack:
         y, x, mask, cnt = stack.pop()
@@ -30,7 +30,7 @@ def dfs():
 
             if 0 <= ny < R and 0 <= nx < C:
     
-                # 시간 초과 코드
+                # 시간 초과난 코드
                 # if arr[ny][nx] in stack:
                 #     continue
                 # -> bitmask로 수정
@@ -42,13 +42,19 @@ def dfs():
                 # alpha 자리에 스위치가 켜져있고, mask 그렇다면 같은 곳을 방문한 것 -> 그냥 지나간다
                 if mask & (1 << alpha):
                     continue
+                new_mask = mask | (1<<alpha)
 
+                if (ny, nx, new_mask) in visited:
+                    continue
+                # 시간 초과 방지용 visited: 상태 중복 방지
+                visited.add((ny, nx, new_mask))
                 stack.append((ny, nx, mask | (1 << alpha), cnt + 1))
     
-
 max_value = 0
+
 start = ord(arr[0][0]) - 65
 stack = []
+visited = set()
 
 dfs()
 
