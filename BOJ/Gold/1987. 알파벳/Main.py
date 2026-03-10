@@ -1,5 +1,5 @@
 import sys
-# sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**6)
 # sys.stdin = open("input.txt", "r")
 
 from collections import deque
@@ -14,7 +14,12 @@ dx = [0, 0, -1, 1]
 
 def dfs(y, x, mask, cnt):
     global max_value
+
+    if max_value == 26:
+        return
+
     max_value = max(max_value, cnt)
+    
     for k in range(4):
         ny = y + dy[k]
         nx = x + dx[k]
