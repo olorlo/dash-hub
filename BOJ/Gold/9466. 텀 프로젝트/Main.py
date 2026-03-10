@@ -1,5 +1,5 @@
 import sys
-# sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**6)
 # sys.stdin = open("input.txt", "r")
 input = sys.stdin.readline
 # 백준 9466번 텀 프로젝트
