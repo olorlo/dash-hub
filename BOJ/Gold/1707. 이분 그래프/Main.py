@@ -19,22 +19,25 @@ for _ in range(K):
         graph[u].append(v)
         graph[v].append(u)
 
-    # 이분 그래프 확인할 집합과 스택
-    set1 = set()
-    set2 = set()
-    stack = []
+    # 이분 그래프 확인할 집합과 스택 -> 시간초과
+    # set1 = set()
+    # set2 = set()
+    # stack = []
+
+    color = [0] * (V+1)
 
     is_bipartite = True
 
     # 이분그래프 만들기
     for start in range(1, V+1):
         # 이미 start 정점이 집합에 들어있으면 패스
-        if start in set1 or start in set2:
+        if color[start] != 0:
             continue
         
-        # 시작: start, set1에 start 넣음
         stack = [start]
-        set1.add(start)
+        # 집합 1에 넣었다고 생각
+        color[start] = 1
+        # set1.add(start)
 
         # stack이 빌때까지 반복
         while stack:
@@ -43,24 +46,22 @@ for _ in range(K):
             # 현재 정점과 연결된 정점
             for next in graph[i]:
 
-                # 이 그래프가 충돌인지 확인
-                if i in set1 and next in set1:
-                    is_bipartite = False
-                    break
-                if i in set2 and next in set2:
-                    is_bipartite = False
-                    break
+                # 이 그래프가 충돌인지 확인 -> 집합으로 했는데 시간초과남
+                # if i in set1 and next in set1:
+                #     is_bipartite = False
+                #     break
+                # if i in set2 and next in set2:
+                #     is_bipartite = False
+                #     break
                 
+                if color[i] == color[next]:
+                    is_bipartite = False
+                    break
+
                 # 이미 집합 속에 들어있는지 확인 (중복 방지)
-                if next in set1 or next in set2:
-                    continue
-
-                stack.append(next)
-
-                if i in set1:
-                    set2.add(next)
-                else:
-                    set1.add(next) 
+                if color[next] == 0:
+                    color[next] -= color[i]
+                    stack.append(next)
 
             if not is_bipartite:
                 break
