@@ -29,8 +29,8 @@ int main() {
 
 		// 지금 단어가 그룹 단어인지 체크
 		// 
-		for (int j = 1; j < c.length(); j++) {
-			if (c[j] != c[j - 1]) {
+		for (int j = 0; j < c.length(); j++) {
+			if (j>0 && c[j] != c[j - 1]) {
 				// 알파벳을 배열 인덱스로 바꿔주기 위해서 제일 처음 수 a를 뺌
 				// 만약 해당 알파벳이 이미 방문된 곳이라면 그룹 단어가 아님 -> group = False
 				if (visited[c[j] - 'a']) {
