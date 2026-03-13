@@ -1,5 +1,3 @@
-input = sys.stdin.readline 
-
 # 백준 11726번 2xn 타일링
 # 사실은 피보나치 수열이엇던 것이엇던 것이엇다. 
 
