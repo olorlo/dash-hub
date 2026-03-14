@@ -12,7 +12,7 @@ while True:
 while stack:
     s = stack.pop()
     if 0 <= s <=9:
-        value = s
+        value = str(s)
     else:
         value = chr(s-10+65)
     result += value
