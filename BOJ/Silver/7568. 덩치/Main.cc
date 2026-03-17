@@ -9,7 +9,7 @@ using namespace std;
 // 백준 C++ 7568 덩치
 
 int main() {
-	# freopen("input.txt", "r", stdin);
+	// freopen("input.txt", "r", stdin);
 
 	int N;
 	cin >> N;
