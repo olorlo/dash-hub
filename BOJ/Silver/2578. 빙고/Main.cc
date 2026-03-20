@@ -93,10 +93,11 @@ int main() {
 				if (bingo_board[4 - k][k] != 0) line2 = false;
 			}
 			if (line2) bingo_cnt++;
-		}
-		if (bingo_cnt >= 3) {
-			cout << cnt;
-			return 0;
+
+			if (bingo_cnt >= 3) {
+				cout << cnt;
+				return 0;
+			}
 		}
 	}
 }
