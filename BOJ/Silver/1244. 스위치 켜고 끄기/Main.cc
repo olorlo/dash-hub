@@ -59,7 +59,9 @@ int main() {
 		}
 
 	}
-	for (int i = 1; i <= N; i++)
+	for (int i = 1; i <= N; i++) {
 		cout << arr[i] << ' ';
-
+		if (i % 20 == 0)
+			cout << '\n';
+	}
 }
