@@ -42,11 +42,12 @@ int main() {
 				for (int k = 0; k < 4; k++) {
 					int ny = i + dy[k];
 					int nx = j + dx[k];
-
+                    
+                    // 범위 밖일 때도 둘레 셀 수 있음
 					if (ny < 0 || ny >= 100 || nx < 0 || nx >= 100)
-						continue;
+						cnt++;
 
-					if (arr[ny][nx] == 0) 
+					else if (arr[ny][nx] == 0) 
 						cnt++;
 				}
 		}
