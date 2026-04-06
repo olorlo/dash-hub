@@ -9,7 +9,7 @@ arr = list(map(int, input().split()))
 oper0 = list(map(int, input().split()))
 
 # 변수 선언
-max_result = 0
+max_result = -float('inf')
 min_result = float('inf')
 
 def cal(oper_num, now, result, oper):
