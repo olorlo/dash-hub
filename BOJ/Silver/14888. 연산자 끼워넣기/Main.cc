@@ -33,8 +33,12 @@ void cal(int now, vector<int>& card, vector<int>& arr, int result) {
 				cal(now + 1, card, arr, result * arr[now + 1]);
 
 			// / 인 경우
-			else if (i == 3)
-				cal(now + 1, card, arr, result / arr[now + 1]);
+            else if (i == 3) {
+                if (result < 0)
+                    cal(now + 1, card, arr, -(-result / arr[now + 1]));
+                else
+                    cal(now + 1, card, arr, result / arr[now + 1]);
+            }
 			card[i] ++;
 		}
 	}
@@ -43,31 +47,24 @@ void cal(int now, vector<int>& card, vector<int>& arr, int result) {
 
 int main() {
 
-	int T;
-	cin >> T;
+    // N: 숫자의 개수
+    int N = 0;
+    cin >> N;
+    
+    // arr: 수식에 들어갈 숫자
+    vector<int>arr(N);
+    for (int i = 0; i < N; i++) cin >> arr[i];
 
+    // card: 연산자 카드의 개수
+    vector<int>card(4);
+    for (int i = 0; i < 4; i++) cin >> card[i];
 
-	for (int tc = 1; tc < T + 1; tc++) {
-		cout << "hello";
+    // 계산
+    max_result = -1e9;
+    min_result = 1e9;
+    cal(0, card, arr, arr[0]);
 
-		// N: 숫자의 개수
-		int N = 0;
-		cin >> N;
-
-		// card: 연산자 카드의 개수
-		vector<int>card(4);
-		for (int i = 0; i < 4; i++) cin >> card[i];
-		
-		// arr: 수식에 들어갈 숫자
-		vector<int>arr(N);
-		for (int i = 0; i < N; i++) cin >> arr[i];
-
-		// 계산
-		max_result = -1e9;
-		min_result = 1e9;
-		cal(0, card, arr, arr[0]);
-
-		cout << max_result;
-        cout << min_result;
-	}
+    cout << max_result << '\n';
+    cout << min_result;
+	
 }
