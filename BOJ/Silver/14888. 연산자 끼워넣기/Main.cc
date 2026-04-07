@@ -67,6 +67,7 @@ int main() {
 		min_result = 1e9;
 		cal(0, card, arr, arr[0]);
 
-		cout << '#' << tc << " " << max_result - min_result << "\n";
+		cout << max_result;
+        cout << min_result;
 	}
 }
