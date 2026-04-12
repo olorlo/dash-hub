@@ -1,3 +1,4 @@
+
 # 백준 1647 도시 분할 계획
 
 # N: 집의 수, M: 집을 연결하는 길의 수
@@ -13,14 +14,6 @@ def find_set(x):
     parents[x] = find_set(parents[x])
     return parents[x]
 
-def union(x, y):
-    rep_x = find_set(x)
-    rep_y = find_set(y)
-
-    # 같은 마을이 아닐 경우 같은 마을로 대표자 바꿔줌
-    if rep_x != rep_y:
-        parents[rep_y] = rep_x
-
 # 그래프 만들기
 edges = []
 for i in range(M):
@@ -35,8 +28,11 @@ parents = [i for i in range(N+1)]
 total, max_cost = 0, 0
 for cost, a, b in edges:
     # 같은 집합이 아니라면 같은 집합으로 만들어주기
-    if find_set(a) != find_set(b):
-        union(a, b)
+    rep_x = find_set(a)
+    rep_y = find_set(b)
+
+    if rep_x != rep_y:
+        parents[rep_x] = rep_y
         total += cost
         max_cost = cost # 마지막 가장 큰 비용 저장
 
