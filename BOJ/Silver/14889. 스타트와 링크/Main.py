@@ -18,7 +18,7 @@ min_val = float('inf')
 def assign(now, start):
     global min_val 
 
-    if len(start) == N/2:
+    if len(start) == N//2:
         link = []
         for i in range(N):
             if i in start:
@@ -35,9 +35,17 @@ def assign(now, start):
         start.pop()
 
 def cal(team):
-    a = team[0]
-    b = team[1]
-    return S[a][b] + S[b][a]
+    total = 0
+
+    for i in range(len(team)):
+        for j in range(i+1, len(team)):
+            a = team[i]
+            b = team[j]
+
+            # 모든 팀원 조합 경우의 수 계산
+            total += S[a][b] + S[b][a]
+
+    return total
 
 assign(0, [])
 
