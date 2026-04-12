@@ -1,4 +1,5 @@
-
+import sys
+input = sys.stdin.readline
 # 백준 1647 도시 분할 계획
 
 # N: 집의 수, M: 집을 연결하는 길의 수
