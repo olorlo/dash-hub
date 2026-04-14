@@ -1,6 +1,6 @@
 import sys, copy
 from itertools import permutations
-sys.stdin = open("input.txt", "r")
+# sys.stdin = open("input.txt", "r")
 input = sys.stdin.readline
 
 # 백준 배열 돌리기4
