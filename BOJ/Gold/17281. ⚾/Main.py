@@ -48,13 +48,14 @@ def simulation(team):
     batter_idx = 0 # 현재 타자 위치
 
     for i in range(inning):
+        inning_result = arr[i]
         out = 0
         b1, b2, b3 = 0, 0, 0 # 1루, 2루, 3루
 
         while True:
             # 현재 플레이어: 현재 타자위치
             player = team[batter_idx]
-            result = arr[i][player]
+            result = inning_result[player]
 
             batter_idx = (batter_idx+1)%9
             # 아웃
