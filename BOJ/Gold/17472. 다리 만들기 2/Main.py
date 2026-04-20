@@ -80,8 +80,12 @@ def cal(n):
                             # 다리 건설: 0을 만남 
                             if arr[ni][nj] == 0:
                                 bridge += 1
-                                
-                            # 다리 확정: 0이 아닌 arr를 만남
+                        
+                            # 바다 건너 자기자신 만남
+                            if arr[ni][nj] == n:
+                                break
+                                    
+                            # 다리 확정: 0이 아닌 arr를 만남                        
                             elif arr[ni][nj] and arr[ni][nj] != n:
                                 if bridge >= 2:
                                     graph[n].append((n, arr[ni][nj], bridge))
