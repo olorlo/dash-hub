@@ -87,12 +87,12 @@ def cal(n):
                                     graph[n].append((n, arr[ni][nj], bridge))
                                 break
                
-for i in range(1, number):
+for i in range(1, number+1):
     cal(i)
 
 # 간선 정리
 edges = []
-for i in range(number):
+for i in range(1, number+1):
     for (a, b, cost) in graph[i]:
         edges.append((cost, a, b))
 
