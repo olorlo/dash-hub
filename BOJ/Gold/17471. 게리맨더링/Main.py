@@ -7,7 +7,10 @@ from collections import deque
 N = int(input())
 population = list(map(int, input().split()))
 
-arr = [list(map(int,input().split())) for _ in range(N)]
+arr = []
+for i in range(N):
+    a = list(map(int,input().split()))
+    arr.append([x-1 for x in a[1:]])
 min_result = float('inf')
 
 # 선거구를 2개로 나눔
@@ -40,6 +43,7 @@ def check(group):
     visited = set()
     dq = deque([group[0]])
     visited.add(group[0])
+    
     while dq:
         now = dq.popleft()
         for next in arr[now]:
@@ -49,5 +53,8 @@ def check(group):
     return len(visited) == len(group)
 
 dfs(0, [])
+
+if min_result == float('inf'):
+    min_result = -1
 
 print(min_result)
